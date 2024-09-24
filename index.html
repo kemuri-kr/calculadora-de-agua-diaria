@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calculadora de Água Diária</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f0f0f0;
+    }
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background: #fff;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+      color: #333;
+    }
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 20px;
+      background-color: #007BFF;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .resultado {
+      margin-top: 25px;
+      text-align: center;
+      font-size: 20px;
+      color: #333;
+      background-color: #e9ecef;
+      padding: 15px;
+      border-radius: 4px;
+    }
+    .resultado strong {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 22px;
+    }
+    .info-text {
+      margin-top: 20px;
+      line-height: 1.6;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Texto Informativo Antes da Calculadora -->
+    <div class="info-text">
+      <p>Ficar sempre hidratado é algo muito importante, pois a água é um elemento fundamental para nossa vida e saúde. Ela participa de quase todos os processos metabólicos do nosso corpo, constituindo cerca de 70% da nossa massa corporal. Consumir a quantidade ideal de água diariamente facilita o processo digestivo de alimentos, previne o surgimento de pedras nos rins e reduz a retenção de líquidos.</p>
+      <p>Sempre ouvimos que devemos beber uma média de 2 litros de água por dia, informação certa, porém incompleta. A verdade é que a necessidade de água para cada pessoa passa por uma série de fatores que vão desde peso, idade, sexo, dieta, estação do ano, prática de atividades, etc.</p>
+      <p>De acordo com a Organização Mundial da Saúde, o cálculo de quanto de água devemos beber todos os dias é mais simples do que parece. São 35 ml diários para cada quilo que temos. Ou seja, uma pessoa de 60 kg deve fazer a conta 60 kg x 35 ml e descobrir que a recomendação é de 2,1 litros por dia.</p>
+      <p><strong>Calcule sua água diária:</strong></p>
+    </div>
+
+    <!-- Título da Calculadora -->
+    <h2>Calculadora de Água Diária</h2>
+
+    <!-- Campo de Entrada de Peso -->
+    <label for="peso">Peso (kg):</label>
+    <input type="number" id="peso" placeholder="Ex: 70" min="0" step="0.1">
+
+    <!-- Botão de Cálculo -->
+    <button onclick="calcularAgua()">Calcular Água Diária</button>
+
+    <!-- Campo de Resultado -->
+    <div class="resultado" id="resultado">
+      <!-- O resultado será exibido aqui -->
+    </div>
+  </div>
+
+  <script>
+    function calcularAgua() {
+      const peso = parseFloat(document.getElementById('peso').value);
+
+      // Validações
+      if (isNaN(peso) || peso <= 0) {
+        alert('Por favor, insira um peso válido.');
+        return;
+      }
+
+      const aguaPorDia = (peso * 35) / 1000; // Converte para litros
+      document.getElementById('resultado').innerHTML = 
+        `<strong>Quantidade diária recomendada:</strong> ${aguaPorDia.toFixed(2)} litros de água por dia.`;
+    }
+  </script>
+</body>
+</html>
